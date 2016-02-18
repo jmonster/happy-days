@@ -1,3 +1,7 @@
-<h2 id="title">Welcome to Ember</h2>
+<h2>Moments</h2>
+{{#each moments as |moment|}}
+  {{moment.title}}: {{moment.reason}}
+{{/each}}
 
+{{moment-catcher moment=newMoment onSave=(action 'saveMoment')}}
 {{outlet}}
