@@ -5,7 +5,9 @@ module.exports = function(environment) {
     modulePrefix: 'happy-days',
     environment: environment,
     contentSecurityPolicy: { 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com" },
-    firebase: 'https://happy-daze.firebaseio.com/',
+    'ember-cli-mirage': {
+      enabled: true
+    },
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {
