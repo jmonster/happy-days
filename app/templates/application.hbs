@@ -1,7 +1,18 @@
 <h2>Moments</h2>
-{{#each moments as |moment|}}
-  {{moment.title}}: {{moment.reason}}
-{{/each}}
 
-{{moment-catcher moment=newMoment onSave=(action 'saveMoment')}}
+<ul>
+{{#each persistedMoments as |moment|}}
+  <li>{{moment.title}}: {{moment.reason}}</li>
+{{/each}}
+</ul>
+
+<a href="#" class="button" {{action (toggle this "catchingAnotherMoment")}}>Catch a Moment</a>
+
+{{#if catchingAnotherMoment}}
+  {{#modal-dialog close=(action (toggle this "catchingAnotherMoment"))}}
+    {{moment-catcher moment=newMoment onSave=(action 'saveMoment')}}
+  {{/modal-dialog}}
+{{/if}}
+
+
 {{outlet}}

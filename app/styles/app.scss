@@ -1,3 +1,5 @@
 @import "settings";
 @import 'foundation';
 @include foundation-everything;
+@import "ember-modal-dialog/ember-modal-structure";
+@import "ember-modal-dialog/ember-modal-appearance";

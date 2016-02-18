@@ -1,6 +1,8 @@
 export default function() {
 
   this.get('/moments');
+  this.post('/moments');
+  this.patch('/moments/:id');
 
   // These comments are here to help you get started. Feel free to delete them.
 
