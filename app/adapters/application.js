@@ -1,8 +1,7 @@
-import Ember from 'ember';
-import FirebaseAdapter from 'emberfire/adapters/firebase';
+import JSONAPIAdapter from 'ember-data/adapters/json-api';
+import config from '../config/environment';
 
-const { inject } = Ember;
-
-export default FirebaseAdapter.extend({
-  firebase: inject.service(),
+export default JSONAPIAdapter.extend({
+  // namespace: config.namespace,
+  // host: config.api
 });
