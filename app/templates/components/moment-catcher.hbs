@@ -1,19 +1,15 @@
-<form>
-  <div class="row">
-    <div class="columns">
-      <label>Title
-        {{input placeholder="held hands with a pretty girl" value=title}}
-      </label>
-    </div>
-    <div class="columns">
-      <label>Why?
-        {{textarea placeholder="because I got high" value=reason}}
-      </label>
-    </div>
-  </div>
-  <div class="row">
-    <div class="input-group-button columns">
-      <input type="submit" class="button" value="Submit" {{ action 'save' }}>
-    </div>
-  </div>
-</form>
+<div class="small-12">
+  <label>Title</label>
+  {{input placeholder="held hands with a pretty girl" value=title}}
+</div>
+<div class="small-12">
+  <label>Why?</label>
+  {{input placeholder="because I got high" value=reason}}
+</div>
+<div class="small-12">
+  <button class="success button small-12" {{ action 'save' }}>Save</button>
+  <button class="secondary button small-12" {{ action 'cancel' }}>Cancel</button>
+  {{#if isNotNew}}
+    <button class="alert button small-12" {{ action 'delete' }}>Delete</button>
+  {{/if}}
+</div>

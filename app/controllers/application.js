@@ -1,23 +1,20 @@
 import Ember from 'ember';
-const { computed } = Ember;
+import moment from 'moment';
+import config from '../config/environment';
+
+const { computed, observer } = Ember;
 
 export default Ember.Controller.extend({
-  moments: computed.alias('model'),
-
-  persistedMoments: computed('moments.@each.isNew', function() {
-    return this.get('moments').filterBy('isNew', false);
-  }),
-
-  newMoment: computed(function () {
-    return this.store.createRecord('moment', {});
-  }),
-
-  actions: {
-    saveMoment(moment) {
-      this.set('newMoment', this.store.createRecord('moment', {}));
-      return moment.save().then(() => {
-        this.toggleProperty('catchingAnotherMoment');
-      });
-    }
-  }
+  today: moment().format('YYYY-MM-DD'),
+  updateTodaysMoments: function() {
+    this.store.query('moment', {
+      filter: { date: this.get('today') }
+    }).then((todaysMoments) => {
+      this.set('todaysMoments', todaysMoments);
+    });
+  },
+  init: observer('today', function() {
+    this._super();
+    this.updateTodaysMoments();
+  })
 });
