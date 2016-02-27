@@ -1,6 +1,7 @@
 /* jshint node: true */
 
-const redirectUri = 'http://localhost:4200';
+const REDIRECT_URI   = process.env.REDIRECT_URI || 'http://localhost:4200';
+const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY || '638321169670-i14ntq7a8q8tc3jrsnrhmuv2vtn3ki0c.apps.googleusercontent.com';
 
 module.exports = function(environment) {
   var ENV = {
@@ -14,9 +15,9 @@ module.exports = function(environment) {
       'sessionServiceName': 'session',
       'providers': {
         'google-token': {
-          'redirectUri': redirectUri,
+          'redirectUri': REDIRECT_URI,
           'scope': 'https://www.googleapis.com/auth/userinfo.email',
-          'apiKey': '638321169670-i14ntq7a8q8tc3jrsnrhmuv2vtn3ki0c.apps.googleusercontent.com'
+          'apiKey': GOOGLE_API_KEY
         }
       }
     },
