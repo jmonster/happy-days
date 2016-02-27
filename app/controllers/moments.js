@@ -35,7 +35,6 @@ export default Ember.Controller.extend({
       moment.set('isBeingEdited', false);
     },
     destroyMoment(moment) {
-      // debugger;
       moment.destroyRecord();
     }
   }

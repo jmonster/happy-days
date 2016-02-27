@@ -1,9 +1,28 @@
 export default function() {
 
+  this.passthrough('https://www.googleapis.com/**');
+
   this.get('/moments');
   this.post('/moments');
   this.patch('/moments/:id');
   this.del('/moments/:id');
+
+  this.get('/users');
+  this.get('/users/:id', function(db, request) {
+    // return db.moment.create({
+    //   authorizationCode: request.params.authorizationCode,
+    //   name: 'my-name-is-this'
+    // });
+
+    db.user.update(+request.params.id, { name: 'my-name-is-this' });
+    return db.user;
+  })
+  this.post('/users', function(db, request) {
+    return db.user.create({
+      authorizationCode: request.params.authorizationCode,
+      name: 'my-name-is-this'
+    });
+  });
 
   // These comments are here to help you get started. Feel free to delete them.
 

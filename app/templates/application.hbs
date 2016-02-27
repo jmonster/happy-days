@@ -1,1 +1,7 @@
+{{#if isAuthenticated}}
+  <h3>hello, {{currentUser.name}}</h3>
+{{else}}
+  <button class="primary button" {{action 'authenticate'}}>Login with Google</button>
+{{/if}}
+
 {{outlet}}
