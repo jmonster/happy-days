@@ -1,3 +1,5 @@
+import Ember from 'ember';
+
 export default function() {
 
   this.passthrough('https://www.googleapis.com/**');
@@ -7,22 +9,13 @@ export default function() {
   this.patch('/moments/:id');
   this.del('/moments/:id');
 
-  this.get('/users');
-  this.get('/users/:id', function(db, request) {
-    // return db.moment.create({
-    //   authorizationCode: request.params.authorizationCode,
-    //   name: 'my-name-is-this'
-    // });
-
-    db.user.update(+request.params.id, { name: 'my-name-is-this' });
-    return db.user;
-  })
-  this.post('/users', function(db, request) {
-    return db.user.create({
-      authorizationCode: request.params.authorizationCode,
-      name: 'my-name-is-this'
-    });
+  // this.get('/users');
+  this.get('/users/:id', 'user');
+  this.get('/users', function(db, request) {
+    let email = request.queryParams['filter[email]'];
+    return db.user.where({ email });
   });
+  this.post('/users');
 
   // These comments are here to help you get started. Feel free to delete them.
 
