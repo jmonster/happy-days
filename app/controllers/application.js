@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import moment from 'moment';
-import config from '../config/environment';
 
 const { computed, observer } = Ember;
 const { alias } = computed;
