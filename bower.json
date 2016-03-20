@@ -1,13 +1,16 @@
 {
   "name": "happy-days",
   "dependencies": {
-    "ember": "~2.3.1",
-    "ember-cli-shims": "0.1.0",
+    "ember": "~2.3.2",
+    "ember-cli-shims": "0.1.1",
     "ember-cli-test-loader": "0.2.2",
     "ember-qunit-notifications": "0.1.0",
-    "foundation-sites": "~6.1.0",
-    "pretender": "~0.10.1",
-    "lodash": "~3.7.0",
-    "Faker": "~3.0.0"
+    "foundation-sites": "~6.2.0",
+    "pretender": "~1.0.0",
+    "lodash": "~4.6.1",
+    "Faker": "~3.0.1"
+  },
+  "resolutions": {
+    "jquery": "~2.2.0"
   }
 }
