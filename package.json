@@ -45,6 +45,7 @@
     "ember-modal-dialog": "0.8.3",
     "ember-moment": "6.1.0",
     "ember-resolver": "^2.0.3",
+    "ember-simple-auth": "1.1.0-beta.3",
     "ember-toggle-helper": "0.1.1",
     "ember-watson": "^0.8.0",
     "loader.js": "^4.0.1",

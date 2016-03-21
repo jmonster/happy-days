@@ -1,19 +1,18 @@
 import Ember from 'ember';
+import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 
-export default Ember.Route.extend({
+export default Ember.Route.extend(ApplicationRouteMixin, {
+  session: Ember.inject.service('session'),
   authenticator: 'authenticator:torii',
-  actions: {
-    authenticate: function(provider){
-      Ember.Logger.info(`authenticate:provider: ${provider}`);
 
-      this.get('session')
-        .open('google-token')
-        .then(({ currentUser }) => {
-          Ember.Logger.info(`authenticate:currentUser: ${JSON.stringify(currentUser)}`);
-          /* nada */
-        }, (error) => {
-          console.error(`authenticate:error: ${error}`);
-        });
+  actions: {
+    authenticate(provider){
+      Ember.Logger.info(`authenticate:provider: ${provider}`);
+      return this.get('session').authenticate('authenticator:torii', provider, {});
+    },
+    invalidateSession() {
+      Ember.Logger.info('invalidateSession');
+      return this.get('session').invalidate();
     }
   }
 });

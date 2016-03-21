@@ -11,8 +11,11 @@ module.exports = function(environment) {
     'ember-cli-mirage': {
       enabled: true
     },
+    'ember-simple-auth': {
+
+    },
     'torii': {
-      'sessionServiceName': 'session',
+      // 'sessionServiceName': 'session',
       'providers': {
         'google-token': {
           'redirectUri': REDIRECT_URI,

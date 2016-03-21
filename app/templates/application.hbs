@@ -1,7 +1,10 @@
-{{#if isAuthenticated}}
-  <h3>hello, {{currentUser.name}}</h3>
-{{else}}
-  <button class="primary button" {{action 'authenticate'}}>Login with Google</button>
-{{/if}}
-
 {{outlet}}
+
+<div class="menu">
+  {{#if session.isAuthenticated}}
+    <h3>hello, {{user.name}}</h3>
+    <button class="primary button" {{action 'invalidateSession'}}>Logout</button>
+  {{else}}
+    <button class="primary button" {{action 'authenticate' 'google-token'}}>Login with Google</button>
+  {{/if}}
+</div>

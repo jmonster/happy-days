@@ -5,6 +5,9 @@ const { computed, observer } = Ember;
 const { alias } = computed;
 
 export default Ember.Controller.extend({
+  session: Ember.inject.service('session'),
+  user: alias('session.data.authenticated.user'),
+
   today: moment().format('YYYY-MM-DD'),
   currentUser: alias('session.currentUser'),
   isAuthenticated: alias('session.isAuthenticated'),
