@@ -1,15 +1,13 @@
 <div class="small-12">
-  <label>Title</label>
-  {{input placeholder="held hands with a pretty girl" value=title}}
+  {{input class="form-control" placeholder="today i held hands with a pretty girl" value=title}}
 </div>
 <div class="small-12">
-  <label>Why?</label>
-  {{input placeholder="because I got high" value=reason}}
+  {{input class="form-control" placeholder="because I went for a walk on the beach" value=reason}}
 </div>
 <div class="small-12">
-  <button class="success button small-12" {{ action 'save' }}>Save</button>
-  <button class="secondary button small-12" {{ action 'cancel' }}>Cancel</button>
+  <button class="btn btn-primary" {{ action 'save' }}>Save</button>
+  <button class="btn btn-default" {{ action 'cancel' }}>Cancel</button>
   {{#if isNotNew}}
-    <button class="alert button small-12" {{ action 'delete' }}>Delete</button>
+    <button class="btn btn-primary btn-danger" {{ action 'delete' }}>Delete</button>
   {{/if}}
 </div>

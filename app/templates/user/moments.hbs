@@ -9,7 +9,9 @@ length: {{moments.length}}
     {{/modal-dialog}} --}}
     {{moment-catcher moment=nextMoment onSave=(action 'saveMoment') onCancel=(toggle this "catchingAnotherMoment")}}
   {{else}}
-    <button class="success button" {{action (toggle this "catchingAnotherMoment")}}>Catch a Moment</button>
+    <button class="btn btn-lg btn-primary" {{action (toggle this "catchingAnotherMoment")}}>
+      Catch a Moment
+    </button>
   {{/if}}
 </div>
 

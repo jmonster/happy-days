@@ -7,6 +7,11 @@ module.exports = function(defaults) {
     // Add options here
   });
 
+  app.import('vendor/css/bootstrap.css');
+  app.import('vendor/css/flat-ui.css');
+  app.import('vendor/css/bootstrap-social.css');
+  app.import('vendor/css/font-awesome.css');
+
   // Use `app.import` to add additional libraries to the generated
   // output files.
   //
