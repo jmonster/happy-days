@@ -5,6 +5,6 @@
     <h3>hello, {{user.name}}</h3>
     <button class="primary button" {{action 'invalidateSession'}}>Logout</button>
   {{else}}
-    <button class="primary button" {{action 'authenticate' 'google-token'}}>Login with Google</button>
+    <button class="sign-in-with-google" {{action 'authenticate' 'google-token'}}></button>
   {{/if}}
 </div>
