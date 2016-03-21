@@ -23,13 +23,14 @@ export default Ember.Controller.extend({
 
   actions: {
     saveMoment(moment) {
+      let user = this.get('user');
+
       // queue up a new moment for the next time one is created
-      this.set('nextMoment', this.store.createRecord('moment', { user: user }));
+      this.set('nextMoment', this.store.createRecord('moment', { user }));
 
       // update UI to reflect that we're saving
       moment.set('isBeingEdited', false);
 
-      let user = this.get('user');
       return moment.save().then(() => {
         this.toggleProperty('catchingAnotherMoment');
       });

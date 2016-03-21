@@ -5,7 +5,7 @@ export default ToriiAuthenticator.extend({
   torii: Ember.inject.service(),
   store: Ember.inject.service(),
 
-  authenticate(provider, options) {
+  authenticate(/*provider, options*/) {
     return this._super(...arguments).then((authentication) => {
 
       Ember.Logger.info(`authentication: ${JSON.stringify(authentication)}`);

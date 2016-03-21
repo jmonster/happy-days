@@ -2,7 +2,7 @@ import Ember from 'ember';
 const { computed } = Ember;
 
 export default Ember.Route.extend({
-  model(params) {
+  model() {
     return Ember.RSVP.hash({
       moments: this.get('user.moments'),
       user: this.modelFor('user')
