@@ -16,6 +16,8 @@ export default function() {
     return db.user.where({ email });
   });
   this.post('/users');
+  this.patch('/users/:id');
+  this.del('/users/:id');
 
   // These comments are here to help you get started. Feel free to delete them.
 

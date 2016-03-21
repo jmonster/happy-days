@@ -10,20 +10,26 @@ export default Ember.Controller.extend({
     return moment(this.get('day'));
   }),
 
-  moments: computed.alias('model'),
+  user: computed.alias('model.user'),
+  moments: computed.alias('model.moments'),
 
-  persistedMoments: computed('moments.@each.isNew', function() {
+  persistedMoments: computed('moments.@each', function() {
     return this.get('moments').filterBy('isNew', false).sortBy('date');
   }),
 
-  newMoment: computed(function () {
-    return this.store.createRecord('moment', {});
+  nextMoment: computed(function () {
+    return this.store.createRecord('moment', { user: this.get('user') });
   }),
 
   actions: {
     saveMoment(moment) {
+      // queue up a new moment for the next time one is created
+      this.set('nextMoment', this.store.createRecord('moment', { user: user }));
+
+      // update UI to reflect that we're saving
       moment.set('isBeingEdited', false);
-      this.set('newMoment', this.store.createRecord('moment', {}));
+
+      let user = this.get('user');
       return moment.save().then(() => {
         this.toggleProperty('catchingAnotherMoment');
       });

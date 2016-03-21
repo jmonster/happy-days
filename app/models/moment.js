@@ -5,5 +5,6 @@ export default DS.Model.extend({
   reason: DS.attr('string'),
   date: DS.attr('date', {
     defaultValue() { return new Date(); }
-  })
+  }),
+  user: DS.belongsTo('user')
 });

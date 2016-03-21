@@ -1,10 +1,13 @@
+name: {{user.name}};
+length: {{moments.length}}
+
 <div class="moment-header">
   <h2 class="moment-title">Moments - {{moment-format dayAsDate 'MM/DD/YY'}}</h2>
   {{#if catchingAnotherMoment}}
     {{!-- {{#modal-dialog close=(action (toggle this "catchingAnotherMoment"))}}
-      {{moment-catcher moment=newMoment onSave=(action 'saveMoment')}}
+      {{moment-catcher moment=nextMoment onSave=(action 'saveMoment')}}
     {{/modal-dialog}} --}}
-    {{moment-catcher moment=newMoment onSave=(action 'saveMoment') onCancel=(toggle this "catchingAnotherMoment")}}
+    {{moment-catcher moment=nextMoment onSave=(action 'saveMoment') onCancel=(toggle this "catchingAnotherMoment")}}
   {{else}}
     <button class="success button" {{action (toggle this "catchingAnotherMoment")}}>Catch a Moment</button>
   {{/if}}
@@ -23,8 +26,8 @@
     <div class="moment large-4 columns">
       {{moment-format moment.date 'MM/DD/YY'}}
       <a href="#" {{action 'editMoment' moment}}>edit this moment</a>
-      <h3>{{moment.title}}</h3>
-      <p>{{moment.reason}}</p>
+      <h3>title:{{moment.title}}</h3>
+      <p>reason:{{moment.reason}}</p>
     </div>
   {{/if}}
 {{/each}}
