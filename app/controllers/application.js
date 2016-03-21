@@ -9,7 +9,6 @@ export default Ember.Controller.extend({
   user: alias('session.data.authenticated.user'),
 
   today: moment().format('YYYY-MM-DD'),
-  currentUser: alias('session.currentUser'),
   isAuthenticated: alias('session.isAuthenticated'),
 
   updateTodaysMoments: function() {
