@@ -1,9 +1,28 @@
-.moment-header {
+.moment {
   display: flex;
+  flex-direction: column;
+}
+.moment:not(:last-child) {
+  border-bottom: 1px dashed gray;
+  padding-bottom: 2rem;
+}
+.moment:not(:first-child) {
+  padding-top: 2rem;
 }
 
 .moment-title {
   flex:1;
-  text-align: center;
-  text-decoration: underline;
+}
+
+.moment-date {
+  color: gray;
+}
+
+.moment-meta {
+  display: flex;
+  flex-direction: row;
+}
+
+.moment-meta .moment-date {
+  flex:1;
 }

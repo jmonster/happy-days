@@ -9,5 +9,5 @@ export default function(server) {
     access_token: 'asdf-1234'
   });
 
-  server.createList('moment', 3, { userId: user.id });
+  server.createList('moment', 2, { userId: user.id });
 }

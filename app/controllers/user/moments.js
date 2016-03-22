@@ -9,9 +9,12 @@ export default Ember.Controller.extend({
   dayAsDate: computed('day', function() {
     return moment(this.get('day'));
   }),
+  dayIsToday: computed.equal('day', moment().format('YYYY-MM-DD')),
+  momentsAreEditable: computed.alias('dayIsToday'),
 
   user: computed.alias('model.user'),
   moments: computed.alias('model.moments'),
+  canCreateMoreMoments: computed.lt('persistedMoments.length',3),
 
   persistedMoments: computed('moments.@each', function() {
     return this.get('moments').filterBy('isNew', false).sortBy('date');
@@ -19,20 +22,15 @@ export default Ember.Controller.extend({
 
   nextMoment: computed(function () {
     return this.store.createRecord('moment', { user: this.get('user') });
-  }),
+  }).volatile(),
 
   actions: {
     saveMoment(moment) {
-      let user = this.get('user');
-
-      // queue up a new moment for the next time one is created
-      this.set('nextMoment', this.store.createRecord('moment', { user }));
-
       // update UI to reflect that we're saving
       moment.set('isBeingEdited', false);
 
       return moment.save().then(() => {
-        this.toggleProperty('catchingAnotherMoment');
+        this.set('catchingAnotherMoment', false);
       });
     },
     editMoment(moment) {
@@ -42,6 +40,10 @@ export default Ember.Controller.extend({
       moment.set('isBeingEdited', false);
     },
     destroyMoment(moment) {
+      moment.destroyRecord();
+    },
+    abortNewMoment(moment) {
+      this.set('catchingAnotherMoment', false);
       moment.destroyRecord();
     }
   }

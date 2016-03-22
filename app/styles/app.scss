@@ -1,3 +1,47 @@
 // @import "ember-modal-dialog/ember-modal-structure";
 // @import "ember-modal-dialog/ember-modal-appearance";
 @import "./moments";
+
+header {
+  display: flex;
+  flex-direction: column;
+
+  p {
+    margin: 0;
+  }
+}
+
+p.celebration {
+  margin: 0;
+}
+
+.form-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-full-bucket {
+  display: block;
+  flex: 1;
+  margin: 1rem 0;
+}
+
+.header-left-bucket {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.header-right-bucket {
+  display: flex;
+  flex: 0;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.btn-social>:first-child {
+  line-height: 4rem;
+}

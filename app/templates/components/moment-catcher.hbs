@@ -1,13 +1,17 @@
-<div class="small-12">
-  {{input class="form-control" placeholder="today i held hands with a pretty girl" value=title}}
-</div>
-<div class="small-12">
-  {{input class="form-control" placeholder="because I went for a walk on the beach" value=reason}}
-</div>
-<div class="small-12">
-  <button class="btn btn-primary" {{ action 'save' }}>Save</button>
-  <button class="btn btn-default" {{ action 'cancel' }}>Cancel</button>
-  {{#if isNotNew}}
-    <button class="btn btn-primary btn-danger" {{ action 'delete' }}>Delete</button>
-  {{/if}}
-</div>
+<form>
+  <div class="form-group">
+    {{input class="form-control" placeholder="today i held hands with a pretty girl" value=title maxlength=240}}
+  </div>
+
+  <div class="form-group">
+    {{input class="form-control" placeholder="because I went for a walk on the beach" value=reason maxlength=240}}
+  </div>
+
+  <div class="form-actions">
+    <a class="btn btn-block btn-primary" {{ action 'save' }}>Save</a>
+    <a class="btn btn-block btn-default" {{ action 'cancel' }}>Cancel</a>
+    {{#if isNotNew}}
+      <a class="btn btn-block btn-danger" {{ action 'delete' }}>Delete</a>
+    {{/if}}
+  </div>
+</form>

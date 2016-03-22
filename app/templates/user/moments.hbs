@@ -1,22 +1,25 @@
-name: {{user.name}};
-length: {{moments.length}}
-
-<div class="moment-header">
-  <h2 class="moment-title">Moments - {{moment-format dayAsDate 'MM/DD/YY'}}</h2>
+{{#if dayIsToday}}
   {{#if catchingAnotherMoment}}
-    {{!-- {{#modal-dialog close=(action (toggle this "catchingAnotherMoment"))}}
-      {{moment-catcher moment=nextMoment onSave=(action 'saveMoment')}}
-    {{/modal-dialog}} --}}
-    {{moment-catcher moment=nextMoment onSave=(action 'saveMoment') onCancel=(toggle this "catchingAnotherMoment")}}
+  <div class="well">
+    {{moment-catcher moment=nextMoment onSave=(action 'saveMoment') onCancel=(action 'abortNewMoment')}}
+  </div>
   {{else}}
-    <button class="btn btn-lg btn-primary" {{action (toggle this "catchingAnotherMoment")}}>
-      Catch a Moment
-    </button>
+    {{#if canCreateMoreMoments}}
+      <button class="btn btn-lg btn-block btn-primary" {{action (toggle this "catchingAnotherMoment")}}>
+        Catch a Moment
+      </button>
+    {{else}}
+      <div class="well">
+        <p class="celebration text-center">🎉 Three moments captured! Hooray! 🎊</p>
+      </div>
+    {{/if}}
   {{/if}}
-</div>
+{{/if}}
 
-<div class="moments row">
+<h2>moments</h2>
+<div class="moments well">
 {{#each persistedMoments as |moment|}}
+  <div class="moment">
   {{#if moment.isBeingEdited}}
     {{moment-catcher
         moment=moment
@@ -25,12 +28,15 @@ length: {{moments.length}}
         onDelete=(action 'destroyMoment')
       }}
   {{else}}
-    <div class="moment large-4 columns">
-      {{moment-format moment.date 'MM/DD/YY'}}
-      <a href="#" {{action 'editMoment' moment}}>edit this moment</a>
-      <h3>title:{{moment.title}}</h3>
-      <p>reason:{{moment.reason}}</p>
-    </div>
+      <div class="moment-meta">
+        <span class="moment-date">{{moment-format moment.date 'MM/DD/YY'}}</span>
+        {{#if momentsAreEditable}}
+          <a class="moment-edit-link" href="#" {{action 'editMoment' moment}}>edit</a>
+        {{/if}}
+      </div>
+      <h4 class="moment-title">{{moment.title}}</h4>
+      <span class="moment-reason">{{moment.reason}}</span>
   {{/if}}
+  </div>
 {{/each}}
 </div>
